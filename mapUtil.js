@@ -111,7 +111,7 @@ function showWay(lng,lat){
 
 function getmylocation(){
   try{console.log(current_location.lat)}catch(err){
-    current_location=new BMap.Point(120.54572,30.645852)
+    //current_location=new BMap.Point(120.54572,30.645852)
 
   }return current_location}
 

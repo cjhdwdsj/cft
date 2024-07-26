@@ -15,7 +15,7 @@ for (var i=0; i<searchs.length; i++){
     isguest = kv[1]
   }
 }
-$("#back_main").attr("href", "/?banji="+classname)
+//$("#back_main").attr("href", "/?banji="+classname)
 var script = document.createElement("script");
 script.type = "text/javascript";
 script.src = "data/" + classname + "/dataEncrypted.js";

@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta charset="UTF-8">
-    <title>桐高2019届303班蹭饭图</title>
+    <title>屯溪一中2024届14班蹭饭图</title>
     <script src="https://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
     <!-- To speed up aes load time -->
     <script type="text/javascript" src="aes.js"></script>
@@ -23,13 +23,14 @@
   </head>
   <body>
     <div id="allmap"></div>
-    <p id="welcome_title" hidden><span id="class_name">桐高2019届303班</span><br/><b>蹭饭指北</b></p>
+    <p id="welcome_title" hidden><span id="class_name">屯溪一中2024届14班</span><br/><b>蹭饭指南</b></p>
     <div id="key_input" hidden>
-      <input id="key" type="password" placeholder="我们的密钥 | 回车确认"  autofocus onKeyDown="enterdecode(event);"/>
+      <input id="key" type="password" placeholder="密钥 | 回车确认"  autofocus onKeyDown="enterdecode(event);"/>
       <br/>
       <a href="javascript:goGuest()">访客入口</a>
     </div>
-    <p id="copyright" hidden>© 2019 <a href="https://github.com/tg2019303" target="_blank">TG2019303</a><br/>
+    <p id="copyright" hidden>© 2024 <a href="https://github.com/tg2019303" target="_blank">TG2019303</a>
+      <a href="https://github.com/cjhdwdsj" target="_blank">cjhdwdsj</a><br/>
     Powered by GitHub Pages</p>
     <div class="search_box" style="display:none">
       <button onClick="aerialView()" >鸟瞰</button>
@@ -38,12 +39,7 @@
       <a id="add_data" href='https://www.wjx.cn/jq/42972034.aspx' target="_blank">
         <button>添加信息申请</button>
       </a>
-      <select onchange="goVisit()" id="class_select">
-        <option value="" disabled selected hidden>看看其他班</option>
-        <option value="TG2019302">桐高2019届302班</option>
-        <option value="TG2019303">桐高2019届303班</option>
-      </select>
-      <a id="back_main" href="/">我不是访客</a>
+      <a id="back_main" href="index.html">我不是访客</a>
     </div>
     <div>
     <script type="text/javascript" src="mapUtil.js"> </script>
@@ -56,7 +52,7 @@
         location.href = "/?banji=" + $('#class_select option:selected').val() + "&guest=1";
       }
     </script>
-      <p id="ctext" hidden="True">© 2019 <a href="https://github.com/tg2019303" target="_blank">TG2019303</a></p>
+      <p id="ctext" hidden="True">© 2024 <a href="https://github.com/cjhdwdsj" target="_blank">cjhdwdsj</a><a> </a></a><a href="https://github.com/tg2019303" target="_blank">TG2019303</a></p>
     </div>
     <div id="seeus" onMouseDown="clearInfoDiv();$('#groupimg').slideToggle()" hidden>Show</div>
     <img id="groupimg" onMouseDown="clearInfoDiv();$('#groupimg').slideToggle()" src="data/TG2019303/Group.jpg" alt=""/>
