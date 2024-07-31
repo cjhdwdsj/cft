@@ -20,6 +20,82 @@
   s.parentNode.insertBefore(hm, s);
 })();
     </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.5.1/styles/default.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.0.10/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.5.1/lib/highlight.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-y: auto; /* 允许垂直滚动 */
+        }
+        #content {
+          position: sticky;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin: 20px; /* 保留一定的间距 */
+            max-width: 70vh;
+            max-height: 50vh; /* 限制白框高度 */
+            overflow-y: auto; /* 允许白框内部滚动 */
+            display: none; /* 初始隐藏 */
+            text-align: left; /* 左对齐 */
+        }
+        .footer {
+            margin-top: auto;
+            padding: 10px;
+            bottom: 10%;
+            text-align: center;
+            
+        }
+        input {
+            padding: 7px 15px;
+            font-size: 16px;
+        }
+        button {
+            padding: 7px 15px;
+            background-color: #a77543;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #9b4309;
+        }
+        .fullscreen-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .fullscreen-btn:hover {
+            background-color: #0056b3;
+        }
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    </style>
   </head>
   <body>
     <div id="allmap"></div>
@@ -27,11 +103,18 @@
     <div id="key_input" hidden>
       <input id="key" type="password" placeholder="密钥 | 回车确认"  autofocus onKeyDown="enterdecode(event);"/>
       <br/>
-      <a href="javascript:goGuest()">访客入口</a>
+      <button onclick="toggleMarkdown()">必读 | README.md</button>
+      <div id="content">
+        <button class="fullscreen-btn" onclick="openInNewWindow()">全屏浏览</button>
+
     </div>
-    <p id="copyright" hidden>© 2024 <a href="https://github.com/tg2019303" target="_blank">TG2019303</a>
-      <a href="https://github.com/cjhdwdsj" target="_blank">cjhdwdsj</a><br/>
-    Powered by GitHub Pages</p>
+    <div class="footer">
+        © 2024 
+        <a href="https://github.com/cjhdwdsj" target="_blank">cjhdwdsj</a>
+        <a href="https://github.com/tg2019303" target="_blank">TG2019303</a>
+        <br>Powered by GitHub Pages
+    </div>
+    </div>
     <div class="search_box" style="display:none">
       <button onClick="aerialView()" >鸟瞰</button>
       <input id="search_input" placeholder="人/大学/专业" onKeyDown="entersearch(event)" />
@@ -55,6 +138,36 @@
       <p id="ctext" hidden="True">© 2024 <a href="https://github.com/cjhdwdsj" target="_blank">cjhdwdsj</a><a> </a></a><a href="https://github.com/tg2019303" target="_blank">TG2019303</a></p>
     </div>
     <div id="seeus" onMouseDown="clearInfoDiv();$('#groupimg').slideToggle()" hidden>Show</div>
-    <img id="groupimg" onMouseDown="clearInfoDiv();$('#groupimg').slideToggle()" src="data/TG2019303/Group.jpg" alt=""/>
+    <img id="groupimg" onMouseDown="clearInfoDiv();$('#groupimg').slideToggle()" src="data/TEST/Group.jpg" alt=""/>
+
+    <script>
+      function toggleMarkdown() {
+          const contentDiv = document.getElementById('content');
+          if (contentDiv.style.display === 'block') {
+              contentDiv.style.display = 'none';
+          } else {
+              fetch('README.md')
+                  .then(response => response.text())
+                  .then(text => {
+                      contentDiv.innerHTML = marked.parse(text, {
+                          highlight: function(code, lang) {
+                              return hljs.highlightAuto(code, [lang]).value;
+                          }
+                      }) + contentDiv.innerHTML;
+                      contentDiv.style.display = 'block'; // 显示内容
+                  });
+          }
+      }
+  
+      function openInNewWindow() {
+    fetch('README.html')
+        .then(response => response.text())
+        .then(text => {
+            const newWindow = window.open('', '_blank');
+            newWindow.document.write('<pre>' + text + '</pre>');
+        });
+}
+
+  </script>
   </body>
 </html>

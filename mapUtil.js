@@ -17,7 +17,7 @@ function loadJScript() {
 function initMap() {
   //初始化地图 默认加载北京天安门
   map = new BMap.Map("allmap");
-  current_location=new BMap.Point(120.54572,30.645852)
+  current_location=new BMap.Point(118.270722,29.779942)
   var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_RIGHT,type:BMAP_NAVIGATION_CONTROL_LARGE});
   map.addControl(ctrl_nav);
   //向地图中添加缩略图控件
@@ -111,8 +111,7 @@ function showWay(lng,lat){
 
 function getmylocation(){
   try{console.log(current_location.lat)}catch(err){
-    //current_location=new BMap.Point(120.54572,30.645852)
-
+    current_location=new BMap.Point(118.270722,29.779942)
   }return current_location}
 
 function randomOrder(){
