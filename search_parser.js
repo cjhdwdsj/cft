@@ -4,7 +4,7 @@ var searchStr = location.search;
 searchStr = searchStr.substr(1);
 //将searchStr字符串分割成数组，数组中的每一个元素为一个参数和参数值
 var searchs = searchStr.split("&");
-var classname = "TEST";
+var classname = "TEST";//班级名字
 var isguest = 0;
 for (var i=0; i<searchs.length; i++){
   kv = searchs[i].split("=")
